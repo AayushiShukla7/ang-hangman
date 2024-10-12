@@ -13,7 +13,6 @@ import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from
 export class HangmanDisplayComponent implements OnChanges {
 
   @Input() question: string = '';
-  @Input() category: string = '';
   @Input() guesses: string[] = [];
   @Output() gameFinished = new EventEmitter<boolean>();
 
@@ -29,8 +28,11 @@ export class HangmanDisplayComponent implements OnChanges {
     const guessesCurrentValue = changes?.['guesses']?.currentValue;
 
     // Reset counter for new question
-    if(guessesCurrentValue && guessesCurrentValue != changes?.['guesses']?.previousValue) {
-      //this.mistakesRemaining = this.Max_Mistakes;
+    if(guessesCurrentValue && 
+      guessesCurrentValue.length == 0 && 
+      guessesCurrentValue != changes?.['guesses']?.previousValue) 
+    {
+      this.mistakesRemaining = this.Max_Mistakes;
       this.success = false;
     }
 

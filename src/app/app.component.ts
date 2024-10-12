@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { HangmanComponent } from './components/hangman/hangman.component';
-import { RouterTestingModule } from '@angular/router/testing';
 
 @Component({
   selector: 'app-root',

@@ -1,6 +1,19 @@
 <div class="hangman">
-    <app-hangman-display [guesses]="guesses" [question]="question" [category]="category" (gameFinished)="onGameFinished()"></app-hangman-display>
+    <app-hangman-display [guesses]="guesses" [question]="question" (gameFinished)="onGameFinished()"></app-hangman-display>
+    
     <ng-container *ngIf="!showRestartGameBtn else restartGameBtn">
+        <div id="categorySelection">
+            Choose a Category:  
+            <mat-form-field>
+              <mat-label>Select an category</mat-label>
+              <mat-select [(value)]="selected" [(ngModel)]="selected" (ngModelChange)="updateSource()">
+                <mat-option value="movies">Movies</mat-option>
+                <mat-option value="fruits">Fruits</mat-option>
+                <mat-option value="animals">Animals</mat-option>
+              </mat-select>
+            </mat-form-field>
+        </div>
+        
         <app-hangman-question [guesses]="guesses" [question]="question"></app-hangman-question>
         <app-hangman-keyboard [question]="question" (keyPressed)="guess($event)"></app-hangman-keyboard>
     </ng-container>
