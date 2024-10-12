@@ -62,8 +62,16 @@ export class HangmanDisplayComponent implements OnChanges {
   }
 
   wasGuessAMistake(letter: string) {
-    const match = this.question.match(new RegExp(letter, 'gi'));  // Flag='gi' => Global & Case-Insensitive
-    return match ? 0 : 1;
+    let wasMistake = false;
+    for(let i = 0; i < this.question.length; i++) {
+      if(this.question[i].toLowerCase() === letter.toLowerCase()) {
+        return 0;
+      }
+    }
+    //const match = this.question.match(new RegExp(letter, 'gi'));  // Flag='gi' => Global & Case-Insensitive
+    //return match ? 0 : 1;
+
+    return 1;
   }
 
 }

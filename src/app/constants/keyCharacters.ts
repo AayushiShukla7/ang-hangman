@@ -1,0 +1,3 @@
+const KEY_CHARS = '#$\'()*+,-./0123456789@ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+export default KEY_CHARS;

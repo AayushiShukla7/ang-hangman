@@ -1,6 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 * {
     outline: none;
+    margin: 0;
+    padding: 0;
 }
 
 html, body {
@@ -9,5 +11,27 @@ html, body {
     font-family: "Dongle", sans-serif;
     font-weight: 400;
     font-style: normal;
+}
+
+.btn {
+    border-radius: 4px;
+    min-width: 36px;
+    min-height: 36px;
+    background-color: rgb(72, 79, 216);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    &:hover {
+      &:not(.btn--disabled) {
+        opacity: 0.7;
+      }
+    }
+    &--disabled {
+      background-color: #dcdcdc;
+      cursor: default;
+    }
 }
   
