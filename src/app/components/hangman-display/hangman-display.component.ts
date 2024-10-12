@@ -45,7 +45,7 @@ export class HangmanDisplayComponent implements OnChanges {
   checkGuess(letter: string) {
     let didWin = true;
     this.mistakesRemaining = this.mistakesRemaining - this.wasGuessAMistake(letter);
-    console.log('Guess: '+ letter + ' and Mistakes remaining: ' + this.mistakesRemaining);
+    //console.log('Guess: '+ letter + ' and Mistakes remaining: ' + this.mistakesRemaining);
 
     for (let i = 0; i < this.question.length; i++) {
       if (
