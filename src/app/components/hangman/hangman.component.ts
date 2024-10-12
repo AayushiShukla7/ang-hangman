@@ -30,14 +30,13 @@ export class HangmanComponent implements OnInit{
   ngOnInit(): void {
     let jsonPath;
     const url = this.location.path();
-    console.log(url);
 
     if(url.includes('jsonPath')) {
       jsonPath = url.split('jsonPath=')[1];
-      console.log(jsonPath);
+      //console.log(jsonPath);
     }
 
-    this.hangmanService.getQuestions()
+    this.hangmanService.getQuestions(jsonPath)
       .subscribe((response) => {
         this.questions = response.items;
         this.category = response.category;

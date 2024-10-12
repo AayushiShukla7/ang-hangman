@@ -13,6 +13,7 @@ import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from
 export class HangmanDisplayComponent implements OnChanges {
 
   @Input() question: string = '';
+  @Input() category: string = '';
   @Input() guesses: string[] = [];
   @Output() gameFinished = new EventEmitter<boolean>();
 

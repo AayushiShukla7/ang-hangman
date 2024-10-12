@@ -1,5 +1,5 @@
 <div class="hangman">
-    <app-hangman-display [guesses]="guesses" [question]="question" (gameFinished)="onGameFinished()"></app-hangman-display>
+    <app-hangman-display [guesses]="guesses" [question]="question" [category]="category" (gameFinished)="onGameFinished()"></app-hangman-display>
     <ng-container *ngIf="!showRestartGameBtn else restartGameBtn">
         <app-hangman-question [guesses]="guesses" [question]="question"></app-hangman-question>
         <app-hangman-keyboard [question]="question" (keyPressed)="guess($event)"></app-hangman-keyboard>
