@@ -30,11 +30,11 @@ export class HangmanComponent implements OnInit{
   ngOnInit(): void {
     let jsonPath;
     const url = this.location.path();
-    console.log(url);
+    //console.log(url);
 
     if(url.includes('jsonPath')) {
       jsonPath = url.split('jsonPath=')[1];
-      console.log(jsonPath);
+      //console.log(jsonPath);
     }
 
     this.hangmanService.getQuestions()
@@ -67,7 +67,7 @@ export class HangmanComponent implements OnInit{
   pickNewQuestion() {
     const randomIndex = Math.floor(Math.random() * this.questions.length);
     this.question = this.questions[randomIndex];
-    console.log('Movie - ' + this.question);
+    // console.log('Movie - ' + this.question);
     //this.question = this.question.split(" ").join("");  // remove empty spaces  
   }
 
