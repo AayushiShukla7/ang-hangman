@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-hangman-display',
@@ -14,6 +14,7 @@ export class HangmanDisplayComponent implements OnChanges {
 
   @Input() question: string = '';
   @Input() guesses: string[] = [];
+  @Output() gameFinished = new EventEmitter<boolean>();
 
   Max_Mistakes = 7;
   mistakesRemaining !: number;
@@ -28,7 +29,7 @@ export class HangmanDisplayComponent implements OnChanges {
 
     // Reset counter for new question
     if(guessesCurrentValue && guessesCurrentValue != changes?.['guesses']?.previousValue) {
-      this.mistakesRemaining = this.Max_Mistakes;
+      //this.mistakesRemaining = this.Max_Mistakes;
       this.success = false;
     }
 
@@ -42,35 +43,32 @@ export class HangmanDisplayComponent implements OnChanges {
   }
 
   checkGuess(letter: string) {
-    let isWinner = true;
-    this.mistakesRemaining -= this.wasGuessAMistake(letter);
+    let didWin = true;
+    this.mistakesRemaining = this.mistakesRemaining - this.wasGuessAMistake(letter);
     console.log('Guess: '+ letter + ' and Mistakes remaining: ' + this.mistakesRemaining);
 
-    for(let i = 0; i < this.question.length; i++) {
-      if(!this.guesses.find(
-        (g) => g.toLowerCase() === this.question[i].toLowerCase())) 
-      {
-        isWinner = false;
+    for (let i = 0; i < this.question.length; i++) {
+      if (
+        !this.guesses.find(
+          (guess) => guess.toLowerCase() === this.question[i].toLowerCase()
+        )
+      ) {
+        didWin = false;
         break;
       }
     }
-
-    this.success = isWinner;
-    if(this.success || this.mistakesRemaining === 0) {
-      console.log('Game Ended');
+    this.success = didWin;
+    if (this.success || this.mistakesRemaining === 0) {
+      this.gameFinished.emit(this.success);
     }
   }
 
   wasGuessAMistake(letter: string) {
-    let wasMistake = false;
-    for(let i = 0; i < this.question.length; i++) {
-      if(this.question[i].toLowerCase() === letter.toLowerCase()) {
+    for (let i = 0; i < this.question.length; i++) {
+      if (this.question[i].toLowerCase() === letter.toLowerCase()) {
         return 0;
       }
     }
-    //const match = this.question.match(new RegExp(letter, 'gi'));  // Flag='gi' => Global & Case-Insensitive
-    //return match ? 0 : 1;
-
     return 1;
   }
 
