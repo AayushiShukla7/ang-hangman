@@ -55,6 +55,7 @@ export class HangmanComponent implements OnInit{
     const randomIndex = Math.floor(Math.random() * this.questions.length);
     this.question = this.questions[randomIndex];
     console.log('Movie - ' + this.question);
+    this.question = this.question.split(" ").join("");  // remove empty spaces    
   }
 
 }
