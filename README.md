@@ -2,6 +2,11 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.3.
 
+ - Functioning hangman game created using HTML, CSS and JavaScript.
+ - Player can choose the category they feel most confident with among - Movies, Fruits and Animals.
+ - Each category has quite a variety of values to play through and never run out of more challenges.
+ - Every play starts with 7 guesses to get the answer right.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
